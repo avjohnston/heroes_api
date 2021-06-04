@@ -1,0 +1,45 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+  heroku: circleci/heroku@1.2.6
+
+jobs:
+  build:
+    working_directory: ~/hero_api
+    docker:
+      - image: circleci/ruby:2.5.3
+        environment:
+          PGHOST: localhost
+          PGUSER: hero_api
+          RAILS_ENV: test
+      - image: postgres:13.2
+        environment:
+          POSTGRES_USER: hero_api
+          POSTGRES_DB: hero_api_test
+          POSTGRES_PASSWORD:
+    steps:
+      - checkout
+      - run:
+          name: hero_api
+          command: bundle -v
+      - ruby/bundle-install
+
+      - checkout
+      - run: gem install bundler
+      - run: bundle install --path vendor/bundle
+      - run: bundle exec rake db:setup
+      - run: bundle exec rspec
+# deploy:
+#     machine:
+#         enabled: true
+#     working_directory: ~/findjobs-backend
+#     environment:
+#       HEROKU_APP: "https://findjob-backend.herokuapp.com/" # define env var $HEROKU_APP
+#     steps:
+#       - checkout
+#       - run:
+#           name: heroku push
+#           command: git push heroku main
+#       - run:
+#           name: heroku migrate
+#           command: heroku run rails db:migrate
