@@ -10,14 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_04_193640) do
+ActiveRecord::Schema.define(version: 2021_06_04_204737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "searches", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.string "race"
+    t.integer "intelligence"
+    t.integer "strength"
+    t.integer "speed"
+    t.string "full_name"
+    t.string "publisher"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "supers", force: :cascade do |t|
     t.string "name"
-    t.integer "intellegince"
+    t.integer "intelligence"
     t.integer "strength"
     t.integer "speed"
     t.string "gender"
