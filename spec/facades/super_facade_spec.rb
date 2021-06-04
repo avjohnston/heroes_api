@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe SuperFacade, type: :model do
   describe 'class methods' do 
     it '#flood_db', :vcr do 
+      SuperFacade.seed_db
       first = Super.first
 
       expect(first.id).to be_an(Integer)
