@@ -1,13 +1,9 @@
 class Api::V1::SearchController < ApplicationController
   def create
     new_params = downcase_params(search_params)
-
     @supers = Search.create(search_params).search.pagination_helper(params[:page].to_i, params[:per_page].to_i)
-    if params[:sort]
-      @supers = @supers.sort(params[:sort])
-    end
+    @supers = @supers.sorting(params[:sort]) if params[:sort]
     @serial = SuperSerializer.new(@supers)
-
     render json: @supers, status: 201
   end
 

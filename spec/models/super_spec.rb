@@ -39,6 +39,18 @@ RSpec.describe Super, type: :model do
       expect(test7.first).to eq(Super.first)
       expect(test8.length).to eq(10)
       expect(test8.first).to eq(Super.first)
+    end
+    
+    it '#custom_sort' do 
+      supers = Super.all
+
+      expect(Super.sorting('name')[0]).to eq(Super.all.last)
+      expect(Super.sorting('speed')[0].speed).to eq(100)
+      expect(Super.sorting('publisher')[0].publisher).to eq('Wildstorm')
+      expect(Super.sorting('intelligence')[0].intelligence).to eq(100)
+      expect(Super.sorting('speed')[0].speed).to eq(100)
+
+      # expect(Super.sorting('alkjdsnu')[0].name).to eq(Super.first.name)
     end 
   end 
 end

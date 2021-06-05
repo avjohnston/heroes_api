@@ -6,7 +6,7 @@ class Search < ApplicationRecord
 
     supers = supers.where('name ilike ?', "%#{name}%") if name.present?
     supers = supers.where('race ilike ?', "%#{race}%") if race.present?
-    supers = supers.where('gender ilike ?', "%#{gender}%") if gender.present?
+    supers = supers.where('gender ilike ?', "#{gender}") if gender.present?
     supers = supers.where('full_name ilike ?', "%#{full_name}%") if full_name.present?
     supers = supers.where('publisher ilike ?', "%#{publisher}%") if publisher.present?
     supers = supers.where('intelligence >= ?', intelligence) if intelligence.present?
