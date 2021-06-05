@@ -4,7 +4,7 @@ class Api::V1::SearchController < ApplicationController
     @supers = Search.create(search_params).search.pagination_helper(params[:page].to_i, params[:per_page].to_i)
     @supers = @supers.sorting(params[:sort]) if params[:sort]
     @serial = SuperSerializer.new(@supers)
-    render json: @supers, status: 201
+    render json: @serial, status: 201
   end
 
   private 

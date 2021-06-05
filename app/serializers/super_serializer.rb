@@ -1,4 +1,4 @@
 class SuperSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :gender, :race, :intelligence, :strength, :speed, :full_name, :publisher
+  attributes :id, :name, :intelligence, :strength, :speed, :gender, :race, :height, :weight, :first_appearance, :full_name, :publisher, :image
 end
