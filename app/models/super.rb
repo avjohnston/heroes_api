@@ -20,7 +20,12 @@ class Super < ApplicationRecord
     self.offset(offset).limit(per_page)
   end
 
-  def self.search(param)
-    order_by("#{param}")
+  def self.sorting(param)
+    valid_attr = ['name', 'publisher', 'intelligence', 'strength', 'speed']
+    if valid_attr.include?(param.downcase)
+      order(param.downcase + ' desc')
+    else
+      order(name: :asc)
+    end
   end
 end
