@@ -149,7 +149,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       expect(response).to have_http_status(201)
 
       expect(json.size).to eq(20)
-      expect(json.first[:name]).to eq('A-Bomb')
+      expect(json.first[:name]).to eq(Super.first.name)
     end
 
     it 'invalid sort param will default to name asc' do 
@@ -162,7 +162,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       expect(response).to have_http_status(201)
 
       expect(json.size).to eq(20)
-      expect(json.first[:name]).to eq('A-Bomb')
+      expect(json.first[:name]).to eq(Super.first.name)
     end 
 
     it 'invalid page and per page wont break' do 
@@ -176,7 +176,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       json = JSON.parse(response.body, symbolize_names: true)
       expect(response).to have_http_status(201)
       expect(json.size).to eq(20)
-      expect(json[0][:name]).to eq('A-Bomb')
+      expect(json[0][:name]).to eq(Super.first.name)
       expect(json[0].keys).to eq(@attr)
       
       #should return empty array
@@ -200,7 +200,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       json3 = JSON.parse(response.body, symbolize_names: true)
       expect(response).to have_http_status(201)
       expect(json3.size).to eq(Super.all.size)
-      expect(json3[0][:name]).to eq('A-Bomb')
+      expect(json3[0][:name]).to eq(Super.first.name)
       expect(json3[0].keys).to eq(@attr)
     end
   end 
