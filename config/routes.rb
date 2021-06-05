@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :search, only: %i[show new create]
+      resources :super, only: :index
+      resources :search, only: :create
     end
   end
 end
