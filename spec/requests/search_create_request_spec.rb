@@ -9,7 +9,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
     it 'should return a list of supers that match the search with valid params' do 
       valid_params = {
         name: 'an',
-        strength: '50'
+        strength: 50
       }
       post api_v1_search_index_path params: valid_params
 
@@ -25,7 +25,6 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       expect(json[0][:attributes][:first_appearance]).to eq('Daredevil #1 (April, 1964) (As Rocky Davis)')
       expect(json[0][:attributes][:full_name]).to eq('Carl Creel')
       expect(json[0][:attributes][:publisher]).to eq('Marvel Comics')
-
       expect(json.all? {|hero| hero[:attributes][:strength] >= 50}).to eq(true)
       expect(json.all? {|hero| hero[:attributes][:name].downcase.include?('an')}).to eq(true)
     end
