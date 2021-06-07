@@ -28,4 +28,18 @@ class Super < ApplicationRecord
       order(name: :asc)
     end
   end
+
+  def self.search(params)
+    supers = Super.all
+    supers = supers.where('name ilike ?', "%#{params[:name]}%") if params[:name].present?
+    supers = supers.where('race ilike ?', "%#{params[:race]}%") if params[:race].present?
+    supers = supers.where('gender ilike ?', "#{params[:gender]}") if params[:gender].present?
+    supers = supers.where('full_name ilike ?', "%#{params[:full_name]}%") if params[:full_name].present?
+    supers = supers.where('publisher ilike ?', "%#{params[:publisher]}%") if params[:publisher].present?
+    supers = supers.where('intelligence >= ?', params[:intelligence].to_i) if params[:intelligence].present?
+    supers = supers.where('strength >= ?', params[:strength].to_i) if params[:strength].present?
+    supers = supers.where('speed >= ?', params[:speed].to_i) if params[:speed].present?
+
+    return supers
+  end
 end

@@ -52,5 +52,12 @@ RSpec.describe Super, type: :model do
 
       # expect(Super.sorting('alkjdsnu')[0].name).to eq(Super.first.name)
     end 
+
+    it '#search returns supers matching the search' do 
+      search = Super.search(name: 'loki')
+
+      expect(search).to eq(Super.where('name ilike ?', "%loki%"))
+      expect(search[0].name).to eq('Loki')
+    end 
   end 
 end
