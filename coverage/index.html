@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-08T14:40:10-06:00">2021-06-08T14:40:10-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-08T15:01:45-06:00">2021-06-08T15:01:45-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -756,7 +756,7 @@
 
             
 
-            <code class="ruby">    @supers = Super.pagination_helper(params[:page].to_i, params[:per_page].to_i)</code>
+            <code class="ruby">    @supers = Super.order(:id).pagination_helper(params[:page].to_i, params[:per_page].to_i)</code>
           </li>
         </div>
       
