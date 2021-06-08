@@ -57,7 +57,7 @@ RSpec.describe Super, type: :model do
     it '#search returns supers matching the search' do 
       search = Super.search(name: 'loki')
       expect(search).to eq(Super.where('name ilike ?', "%loki%"))
-      expect(search[0].name).to eq('Loki')
+      expect(search.all? {|sup| sup.name.downcase.include?('loki')}).to eq(true)
 
       search2 = Super.search(name: 'an', publisher: 'marvel', min_intelligence: 50, max_speed: 90)
       expect(search2.all? {|sup| sup.name.downcase.include?('an')})
