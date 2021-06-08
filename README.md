@@ -43,44 +43,44 @@ Make yourself aware and familiar with the gems that are being used for this proj
 Project consists of tests for Requests, Models, Services and Facades, all with happy path, sad path/edge cases.
 Coverage currently sits at 100%
 
-#### Search POST Request Happy Path
+#### `Search POST Request Happy Path`
 ![search_re_happy](https://user-images.githubusercontent.com/72912074/121247739-d4a58e00-c85f-11eb-9e20-0fb10e0c1138.png)
 
-#### Search POST Request Sad Path
+#### `Search POST Request Sad Path`
 ![search_re_sad](https://user-images.githubusercontent.com/72912074/121247759-da02d880-c85f-11eb-95ff-03b0338aead7.png)
 
-#### Super GET Request Happy Path
+#### `Super GET Request Happy Path`
 ![super_re_happy](https://user-images.githubusercontent.com/72912074/121247784-dff8b980-c85f-11eb-885a-8b3d5378f08f.png)
 
-#### Super GET Request Sad Path
+#### `Super GET Request Sad Path`
 ![super_re_sad](https://user-images.githubusercontent.com/72912074/121247802-e4bd6d80-c85f-11eb-9597-86a5b236fe6f.png)
 
-#### Search Model Sad Path
+#### `Search Model Sad Path`
 ![search_m_sad](https://user-images.githubusercontent.com/72912074/121247822-ea1ab800-c85f-11eb-9936-99f19626acc1.png)
 
-#### Super Model Happy Path
+#### `Super Model Happy Path`
 ![super_m_happy](https://user-images.githubusercontent.com/72912074/121247863-f69f1080-c85f-11eb-9cc5-76c03bf0c7ea.png)
 
-#### Super Model Sad Path
+#### `Super Model Sad Path`
 ![super_m_sad](https://user-images.githubusercontent.com/72912074/121247880-facb2e00-c85f-11eb-9f36-42847310db0c.png)
 
-##### Super Service Happy Path
+##### `Super Service Happy Path`
 ![super_service](https://user-images.githubusercontent.com/72912074/121247884-fdc61e80-c85f-11eb-8754-b8ccdf11e05f.png)
 
-#### Super Facade Happy Path
+#### `Super Facade Happy Path`
 ![super_facade](https://user-images.githubusercontent.com/72912074/121247897-00287880-c860-11eb-97cb-410630bc2e0b.png)
 
 _These are just examples, to see the full test coverage please look into the `spec` folder of the app_
 
 ## Endpoints
 
-### POST `supers-api.herokuapp.com/api/v1/search`
+### `POST supers-api.herokuapp.com/api/v1/search`
 Creates a Search in the DB as long as valid parameters are sent as the body of the request, returns super heroes that match from the DB. Defaults to sort by name, defaults to page 1 and 20 per page, but all can be changed.
 
 Valid Parameters:
 ![search_params](https://user-images.githubusercontent.com/72912074/121243803-619a1880-c85b-11eb-9dce-6217fadaaaab.png)
 
-### GET `findjob-backend.herokuapp.com/api/v1/supers`
+### `GET findjob-backend.herokuapp.com/api/v1/supers`
 Returns all super heroes, sorted by name. Pagination defaults to page 1 and 20 per page, but can be changed.
 
 Valid Parameters:
