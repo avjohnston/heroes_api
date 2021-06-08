@@ -75,13 +75,13 @@ _These are just examples, to see the full test coverage please look into the `sp
 
 ## Endpoints
 
-### `POST supers-api.herokuapp.com/api/v1/search`
+### `POST` `supers-api.herokuapp.com/api/v1/search`
 Creates a Search in the DB as long as valid parameters are sent as the body of the request, returns super heroes that match from the DB. Defaults to sort by name, defaults to page 1 and 20 per page, but all can be changed.
 
 Valid Parameters:
 ![search_params](https://user-images.githubusercontent.com/72912074/121243803-619a1880-c85b-11eb-9dce-6217fadaaaab.png)
 
-### `GET findjob-backend.herokuapp.com/api/v1/supers`
+### `GET` `findjob-backend.herokuapp.com/api/v1/supers`
 Returns all super heroes, sorted by name. Pagination defaults to page 1 and 20 per page, but can be changed.
 
 Valid Parameters:
