@@ -4,14 +4,18 @@ Heores API was created to serialize super heroes from across different publicati
 
 ## Summary
 
+  - [Authors](#authors)
   - [Getting Started](#getting-started)
   - [Running the tests](#running-the-tests)
   - [Endpoints](#endpoints)
   - [Built With](#built-with)
-  - [Versioning](#versioning)
-  - [Authors](#authors)
   - [Refelctions](#reflections)
   - [Acknowledgments](#acknowledgments)
+
+## Authors
+
+  - **Andrew Johnston** - 
+    [GitHub](https://github.com/avjohnston)
 
 ## Getting Started
 
@@ -85,6 +89,7 @@ Valid Parameters:
 ## Built With
 
   - Rails API
+  - Postgres
   - FastJsonApi
   - RSpec
   - Capybara
@@ -94,11 +99,6 @@ Valid Parameters:
 ## Versioning
 
 This is version 1 of Heroes API, for any updated versions please check back here. New versions will be linked below:
-
-## Authors
-
-  - **Andrew Johnston** - 
-    [GitHub](https://github.com/avjohnston)
 
 ## Reflection
   
