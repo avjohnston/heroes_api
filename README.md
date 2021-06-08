@@ -36,6 +36,7 @@ Make yourself aware and familiar with the gems that are being used for this proj
 
 ## Running the tests
 
+- `rails db:seed RAILS_ENV=test` to seed the test database
 - `bundle exec rspec` to run the test suite
 
 ### Sample of Tests Across the App
