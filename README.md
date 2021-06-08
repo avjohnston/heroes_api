@@ -5,6 +5,7 @@ Heores API was created to serialize super heroes from across different publicati
 ## Summary
 
   - [Authors](#authors)
+  - [Schema Design](#schema-design)
   - [Getting Started](#getting-started)
   - [Running the tests](#running-the-tests)
   - [Endpoints](#endpoints)
@@ -16,6 +17,9 @@ Heores API was created to serialize super heroes from across different publicati
 
   - **Andrew Johnston** - 
     [GitHub](https://github.com/avjohnston)
+    
+## Schema Design
+![Screen Shot 2021-06-08 at 2 54 45 PM](https://user-images.githubusercontent.com/72912074/121256295-a2009300-c869-11eb-9d73-8d257d284dac.png)
 
 ## Getting Started
 
