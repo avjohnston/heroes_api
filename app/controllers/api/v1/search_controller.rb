@@ -2,16 +2,16 @@ class Api::V1::SearchController < ApplicationController
   def create
     new_params = downcase_params(search_params)
     Search.create(new_params)
-    @supers = Super.search(new_params).pagination_helper(params[:page].to_i, params[:per_page].to_i)
-    @supers = @supers.sorting(params[:sort]) if params[:sort]
-    @serial = SuperSerializer.new(@supers)
-    render json: @serial, status: 201
+    supers = Super.search(new_params).pagination_helper(params[:page].to_i, params[:per_page].to_i)
+    supers = supers.sorting(params[:sort]) if params[:sort]
+    serial = SuperSerializer.new(supers)
+    render json: serial, status: 201
   end
 
   private 
 
   def search_params
-    params.permit(:name, :intelligence, :strength, :speed, :gender, :race, :full_name, :publisher)
+    params.permit(:name, :min_intelligence, :min_strength, :min_speed, :max_intelligence, :max_strength, :max_speed, :gender, :race, :full_name, :publisher)
   end
 
   def downcase_params(params)

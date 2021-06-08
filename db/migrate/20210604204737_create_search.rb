@@ -4,9 +4,12 @@ class CreateSearch < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :gender
       t.string :race
-      t.integer :intelligence
-      t.integer :strength
-      t.integer :speed
+      t.integer :min_intelligence
+      t.integer :max_intelligence
+      t.integer :min_strength
+      t.integer :max_strength
+      t.integer :min_speed
+      t.integer :max_speed
       t.string :full_name
       t.string :publisher
 

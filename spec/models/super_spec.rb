@@ -49,15 +49,38 @@ RSpec.describe Super, type: :model do
       expect(Super.sorting('publisher')[0].publisher).to eq('Wildstorm')
       expect(Super.sorting('intelligence')[0].intelligence).to eq(100)
       expect(Super.sorting('speed')[0].speed).to eq(100)
+      expect(Super.sorting('').size).to eq(Super.all.size)
 
       # expect(Super.sorting('alkjdsnu')[0].name).to eq(Super.first.name)
     end 
 
     it '#search returns supers matching the search' do 
       search = Super.search(name: 'loki')
-
       expect(search).to eq(Super.where('name ilike ?', "%loki%"))
       expect(search[0].name).to eq('Loki')
+
+      search2 = Super.search(name: 'an', publisher: 'marvel', min_intelligence: 50, max_speed: 90)
+      expect(search2.all? {|sup| sup.name.downcase.include?('an')})
+      expect(search2.all? {|sup| sup.publisher.downcase.include?('marvel')})
+      expect(search2.all? {|sup| sup.intelligence >= 50})
+      expect(search2.all? {|sup| sup.speed <= 90})
+    end 
+
+    it '#search sad path' do
+      search = Super.search(hello: 'world')
+      expect(search.size).to eq(Super.all.size)
+
+      search2 = Super.search(min_strength: 105)
+      expect(search2).to eq([])
+
+      search3 = Super.search(max_speed: -25)
+      expect(search3).to eq([])
+
+      search4 = Super.search(max_speed: 'hello')
+      expect(search4).to eq([])
+
+      search5 = Super.search(min_intelligence: 'hello')
+      expect(search5.size).to eq(Super.all.size)
     end 
   end 
 end
