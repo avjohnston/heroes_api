@@ -26,3 +26,4 @@ RSpec.describe SuperFacade, type: :model do
     end 
   end 
 end
+
