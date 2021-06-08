@@ -9,13 +9,20 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
     it 'should return a list of supers that match the search with valid params' do 
       valid_params = {
         name: 'an',
-        strength: 50
+        min_strength: 50
       }
-      post api_v1_search_index_path params: valid_params
 
+      searches_size = Search.all.size
+      post api_v1_search_index_path params: valid_params
       json = JSON.parse(response.body, symbolize_names: true)[:data]
       expect(response).to have_http_status(201)
-
+      
+      expect(Search.all.size > searches_size).to eq(true)
+      expect(Search.last.name).to eq('an')
+      expect(Search.last.min_strength).to eq(50)
+      expect(Search.last.publisher).to eq(nil)
+      expect(Search.last.max_speed).to eq(nil)
+      
       expect(json.size).to eq(20)
       expect(json[0][:attributes].keys).to eq(@attr)
       expect(json[0][:id]).to be_an(String)
@@ -33,7 +40,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       valid_params = {
         race: 'human',
         gender: 'male',
-        speed: 75
+        min_speed: 75
       }
       post api_v1_search_index_path params: valid_params
 
@@ -51,7 +58,8 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       valid_params = {
         full_name: 'an',
         publisher: 'marvel',
-        intelligence: 60
+        min_intelligence: 60,
+        max_intellgience: 100
       }
       post api_v1_search_index_path params: valid_params
 
@@ -63,6 +71,23 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       expect(json.all? {|hero| hero[:attributes][:full_name].downcase.include?('an')}).to eq(true)
       expect(json.all? {|hero| hero[:attributes][:publisher].downcase.include?('marvel')}).to eq(true)
       expect(json.all? {|hero| hero[:attributes][:intelligence] >= 60}).to eq(true)
+      expect(json.all? {|hero| hero[:attributes][:intelligence] <= 100}).to eq(true)
+    end
+
+    it 'should return a list of supers that match the search with valid params 3' do
+      valid_params = {
+        full_name: 'oo',
+        max_speed: 75
+      }
+      post api_v1_search_index_path params: valid_params
+
+      json = JSON.parse(response.body, symbolize_names: true)[:data]
+      expect(response).to have_http_status(201)
+
+      expect(json.size).to eq(11)
+      expect(json[0][:attributes].keys).to eq(@attr)
+      expect(json.all? {|hero| hero[:attributes][:full_name].downcase.include?('oo')}).to eq(true)
+      expect(json.all? {|hero| hero[:attributes][:speed] <= 75}).to eq(true)
     end
 
     it 'should return a list of supers that match search with pagination' do 
@@ -83,7 +108,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
     it 'should be able to sort as well as search' do
       valid_params = {
         name: 'z',
-        strength: 25,
+        min_strength: 25,
         sort: 'speed'
       }
       post api_v1_search_index_path params: valid_params
@@ -98,7 +123,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
 
       valid_params2 = {
         publisher: 'marvel',
-        speed: 50,
+        min_speed: 50,
         sort: 'name',
         page: 2, 
         per_page: 5
@@ -119,7 +144,7 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
   describe 'sad path' do 
     it 'should return empty array if no supers match' do 
       invalid_params = {
-        speed: 101
+        min_speed: 101
       }
       post api_v1_search_index_path params: invalid_params
 
@@ -137,6 +162,16 @@ RSpec.describe 'Api::V1::Search Create', type: :request do
       expect(response).to have_http_status(201)
 
       expect(json2).to eq([])
+
+      invalid_params3 = {
+        max_speed: -1
+      }
+      post api_v1_search_index_path params: invalid_params3
+
+      json3 = JSON.parse(response.body, symbolize_names: true)[:data]
+      expect(response).to have_http_status(201)
+
+      expect(json3).to eq([])
     end
 
     it 'should return all supers if params are invalid' do 

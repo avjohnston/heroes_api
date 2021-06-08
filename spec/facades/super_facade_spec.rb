@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe SuperFacade, type: :model do
   describe 'class methods' do 
-    it '#flood_db', :vcr do 
+    it '#flood_db', :vcr do
+      Super.destroy_all
+      expect(Super.all).to eq([])
+      
       SuperFacade.seed_db
       first = Super.first
 
+      expect(Super.all.size > 0).to eq(true)
       expect(first.id).to be_an(Integer)
       expect(first.name).to be_a(String)
       expect(first.intelligence).to be_an(Integer)

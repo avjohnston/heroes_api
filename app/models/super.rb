@@ -36,9 +36,17 @@ class Super < ApplicationRecord
     supers = supers.where('gender ilike ?', "#{params[:gender]}") if params[:gender].present?
     supers = supers.where('full_name ilike ?', "%#{params[:full_name]}%") if params[:full_name].present?
     supers = supers.where('publisher ilike ?', "%#{params[:publisher]}%") if params[:publisher].present?
-    supers = supers.where('intelligence >= ?', params[:intelligence].to_i) if params[:intelligence].present?
-    supers = supers.where('strength >= ?', params[:strength].to_i) if params[:strength].present?
-    supers = supers.where('speed >= ?', params[:speed].to_i) if params[:speed].present?
+
+    supers = supers.where("intelligence >= ?", "#{params[:min_intelligence].to_i}") if params[:min_intelligence].present?
+    supers = supers.where("intelligence <= ?", "#{params[:max_intelligence].to_i}") if params[:max_intelligence].present?
+    supers = supers.where("strength >= ?", "#{params[:min_strength].to_i}") if params[:min_strength].present?
+    supers = supers.where("strength <= ?", "#{params[:max_strength].to_i}") if params[:max_strength].present?
+    supers = supers.where("speed >= ?", "#{params[:min_speed].to_i}") if params[:min_speed].present?
+    supers = supers.where("speed <= ?", "#{params[:max_speed].to_i}") if params[:max_speed].present?
+
+    # supers = supers.where('intelligence >= ?', params[:intelligence].to_i) if params[:intelligence].present?
+    # supers = supers.where('strength >= ?', params[:strength].to_i) if params[:strength].present?
+    # supers = supers.where('speed >= ?', params[:speed].to_i) if params[:speed].present?
 
     return supers
   end
