@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-08T11:27:52-06:00">2021-06-08T11:27:52-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-06-08T13:43:54-06:00">2021-06-08T13:43:54-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -319,7 +319,7 @@
             <td class="cell--number">65</td>
             <td class="cell--number">65</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.31</td>
+            <td class="cell--number">2.32</td>
             
           </tr>
         
@@ -5427,13 +5427,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="60">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">      expect(search[0].name).to eq(&#39;Loki&#39;)</code>
+            <code class="ruby">      expect(search.all? {|sup| sup.name.downcase.include?(&#39;loki&#39;)}).to eq(true)</code>
           </li>
         </div>
       
