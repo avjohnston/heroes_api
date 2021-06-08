@@ -60,10 +60,10 @@ Coverage currently sits at 100%
 #### Super Model Sad Path
 ![super_m_sad](https://user-images.githubusercontent.com/72912074/121247880-facb2e00-c85f-11eb-9f36-42847310db0c.png)
 
-##### Search Service Happy Path
+##### Super Service Happy Path
 ![super_service](https://user-images.githubusercontent.com/72912074/121247884-fdc61e80-c85f-11eb-8754-b8ccdf11e05f.png)
 
-#### Search Facade Happy Path
+#### Super Facade Happy Path
 ![super_facade](https://user-images.githubusercontent.com/72912074/121247897-00287880-c860-11eb-97cb-410630bc2e0b.png)
 
 _These are just examples, to see the full test coverage please look into the `spec` folder of the app_
@@ -102,7 +102,13 @@ This is version 1 of Heroes API, for any updated versions please check back here
 
 ## Reflection
   
-Put Refelection Here
+I very much enjoyed getting to work on this application, it was a lot of fun getting to work with an API of my choice that deals with one of my interests. I felt comfortable and confident with the choices I made, and look forward to getting to explain these choices further.
+
+Project Planning and TDD was a large part of what made my work on this application, in my opinion, successful. The ability to sit and plan out what exactly how I wanted to implement the functionality before jumping into code, allowed me the time to foresee potential issues and best practices to follow. Just like life, things always come up that you can't forsee, but in keeping with TDD I was able to change my code, refactor, and continue working fairly smoothly when problems/issues arised.
+
+This was my first time creating a Search Table and it threw me for a loop at first glance. However, the more I thought about it, the more it made sense in my head. Allowing us to store distinct searches in our database can allow our application to implement all sorts of interesting functionality. A big piece that stood out to me, was how it could allow us to more easily cache our Super Hero results for specific searches and boost performance in our application, among other things. I believe there are probably other ways to implement this search table and functionality, but I went with what felt best with my skill set.
+
+As stated before, I used Heroku to host the application and Circle CI for Continuous Integration. While working on this app by myself I found Circle to be a helpful, extra guard against failing tests and deploying broken code, especially when there is no one to review your code. Heroku is set to autodeploy after Code has been merged into main, and the Circle build passes.
 
 ## Acknowledgments
 
