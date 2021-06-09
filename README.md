@@ -1,6 +1,6 @@
 # Heroes API
 
-Heores API was created to serialize super heroes from across different publications all into one place, using Super API. The data is passed along through two endpoints, `/search` and `/supers`, and uses pagination to return the super heroes. Valid search parameters can allow you to sort and filter through the super heroes and return based on specific parameters that are highlighted below in *Endpoints*. This application uses Circle CI for Continuous Integration and is deployed on heroku at `https://supers-api.herokuapp.com/api/v1/`, being autodeployed with a passing Circle Build.
+Heores API was created to serialize super heroes from across different publications all into one place, using Super API. The data is passed along through two endpoints, `/search` and `/supers`, and uses pagination to return the super heroes. Valid search parameters can allow you to sort and filter through the super heroes and return based on specific parameters that are highlighted below in *Endpoints*. This application uses Circle CI for Continuous Integration and is deployed on heroku at `https://supers-api.herokuapp.com`, being autodeployed with a passing Circle Build.
 
 ## Summary
 
