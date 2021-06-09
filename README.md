@@ -86,7 +86,7 @@ Valid Parameters:
 ![search_params](https://user-images.githubusercontent.com/72912074/121243803-619a1880-c85b-11eb-9dce-6217fadaaaab.png)
 _Note: Supers default to sorting by name ascending, but the sort param causes the Supers to be sorted by descending order_
 
-### `GET` `findjob-backend.herokuapp.com/api/v1/super`
+### `GET` `supers-api.herokuapp.com/api/v1/super`
 Returns all super heroes, sorted by name. Pagination defaults to page 1 and 20 per page, but can be changed.
 
 Valid Parameters:
